@@ -13,12 +13,12 @@ ENV \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
-ENV SABNZBD__PORT=8080
+ENV MYLAR3__PORT=8090
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
-    curl -fsSL "https://github.com/sabnzbd/sabnzbd/releases/download/${VERSION}/SABnzbd-${VERSION}-src.tar.gz" \
+    curl -fsSL "https://github.com/mylar3/mylar3/archive/refs/tags/v${VERSION}.tar.gz" \
         | tar xzf - -C /app --strip-components=1 \
     && \
     chown -R root:root /app \
@@ -54,8 +54,7 @@ RUN \
         /tmp/*
 
 USER kah
-COPY ./apps/sabnzbd/sabnzbd.ini /app/sabnzbd.ini
-COPY ./apps/sabnzbd/entrypoint.sh /entrypoint.sh
+COPY ./apps/mylar3/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
-LABEL org.opencontainers.image.source="https://github.com/sabnzbd/sabnzbd"
+LABEL org.opencontainers.image.source="https://github.com/mylar3/mylar3"
