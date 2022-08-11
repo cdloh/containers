@@ -33,8 +33,6 @@ RUN \
         ca-certificates \
         python3 \
         py3-pip \ 
-        par2cmdline \
-        p7zip \
         # runtime tools
         jpeg \
         libwebp-tools \
