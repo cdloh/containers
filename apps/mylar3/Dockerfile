@@ -35,15 +35,23 @@ RUN \
         py3-pip \ 
         par2cmdline \
         p7zip \
+        # runtime tools
+        jpeg \
+        libwebp-tools \
+        nodejs \
+        zlib \
     && \
     apk add --no-cache --virtual=.build-deps \
         build-base \
-        libffi-dev \
-        openssl-dev \
-        musl-dev \
         cargo \
-        zlib-dev \
+        jpeg-dev \
+        libffi-dev \
+        libwebp-dev \
+        musl-dev \
+        openssl-dev \
+        py3-cffi \
         python3-dev \
+        zlib-dev \
     && \
     pip install --upgrade pip \
     && \
