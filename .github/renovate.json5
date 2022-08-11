@@ -8,7 +8,7 @@
   ],
   "platform": "github",
   "username": "rosey-bot[bot]",
-  "repositories": ["onedr0p/containers"],
+  "repositories": ["cdloh/containers"],
   "onboarding": false,
   "requireConfig": false,
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
