@@ -1,4 +1,4 @@
-FROM ghcr.io/onedr0p/ubuntu:rolling@sha256:20a8c81c8e14100ca6122ff238362926ed7b3085060f1b5454ecebcf9fd4580d as builder
+FROM ghcr.io/cdloh/ubuntu:rolling@sha256:2c6a1fa6eb6cb23a65bc2644c01d55f64660bfee5f1734f135538ed672305279 as builder
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -39,7 +39,7 @@ RUN \
         /tmp/opt/emby-server/etc \
         /tmp/opt/emby-server/extra/lib/*
 
-FROM ghcr.io/onedr0p/ubuntu:rolling@sha256:20a8c81c8e14100ca6122ff238362926ed7b3085060f1b5454ecebcf9fd4580d
+FROM ghcr.io/onedr0p/ubuntu:rolling@sha256:2c6a1fa6eb6cb23a65bc2644c01d55f64660bfee5f1734f135538ed672305279
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
