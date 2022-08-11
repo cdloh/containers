@@ -42,6 +42,7 @@ RUN \
         openssl-dev \
         musl-dev \
         cargo \
+        zlib-dev \
         python3-dev \
     && \
     pip install --upgrade pip \
