@@ -39,7 +39,7 @@ RUN \
         /tmp/opt/emby-server/etc \
         /tmp/opt/emby-server/extra/lib/*
 
-FROM ghcr.io/onedr0p/ubuntu:rolling@sha256:2c6a1fa6eb6cb23a65bc2644c01d55f64660bfee5f1734f135538ed672305279
+FROM ghcr.io/cdloh/ubuntu:rolling@sha256:2c6a1fa6eb6cb23a65bc2644c01d55f64660bfee5f1734f135538ed672305279
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
