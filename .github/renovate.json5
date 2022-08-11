@@ -11,7 +11,6 @@
   "repositories": ["onedr0p/containers"],
   "onboarding": false,
   "requireConfig": false,
-  "gitAuthor": "rosey-bot <98030736+rosey-bot[bot]@users.noreply.github.com>",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "commitBodyTable": true,

@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   pr-metadata:
-    uses: onedr0p/containers/.github/workflows/pr-metadata.yaml@main
+    uses: cdloh/containers/.github/workflows/pr-metadata.yaml@main
 
   generate-build-matrix:
     name: Generate matrix for building images
