@@ -7,7 +7,6 @@
     ":semanticCommits"
   ],
   "platform": "github",
-  "username": "cdloh",
   "repositories": ["cdloh/containers"],
   "onboarding": false,
   "requireConfig": false,
