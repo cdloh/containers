@@ -7,7 +7,7 @@
     ":semanticCommits"
   ],
   "platform": "github",
-  "username": "rosey-bot[bot]",
+  "username": "CLOH Bot[bot]",
   "repositories": ["cdloh/containers"],
   "onboarding": false,
   "requireConfig": false,
