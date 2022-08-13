@@ -19,7 +19,7 @@ RUN apt-get update -y && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     mkdir -p /run/nordvpn && \
-    mkdir -p /scripts && \
+    mkdir -p /nordvpn-scripts && \
     rm -rf \
         /tmp/* \
         /var/cache/apt/archives/* \
@@ -27,7 +27,7 @@ RUN apt-get update -y && \
         /var/tmp/*
 
 COPY ./apps/nordvpn/client.sh /client.sh
-COPY ./apps/nordvpn/scripts /scripts
+COPY ./apps/nordvpn/scripts /nordvpn-scripts
 COPY ./apps/nordvpn/healthcheck.sh /healthcheck.sh
 COPY ./apps/nordvpn/entrypoint.sh /entrypoint.sh
 
