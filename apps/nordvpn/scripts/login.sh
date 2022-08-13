@@ -13,16 +13,13 @@ do
 done
 
 
-if nordvpn account; then
-    echo "Were logged in moving on"
+if /usr/bin/nordvpn account > /dev/null; then
+    echo "NordVPN logged in moving on"
     exit 0
 fi
 
 [[ -z "${PASS}" ]] && [[ -f "${PASSFILE}" ]] && PASS="$(head -n 1 "${PASSFILE}")"
 [[ -z "${USER}" ]] && [[ -f "${USERFILE}" ]] && USER="$(head -n 1 "${USERFILE}")"
-
-echo $PASSFILE
-echo $USERFILE
 
 
 /usr/bin/nordvpn login --legacy --username "${USER}" --password "${PASS}" || {
