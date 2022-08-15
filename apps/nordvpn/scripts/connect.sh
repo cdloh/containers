@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -n ${PRE_CONNECT} ]] && eval ${PRE_CONNECT}
+[[ -n ${PRE_CONNECT} ]] && eval "${PRE_CONNECT}"
 
 echo "Connecting..."
 current_sleep=1
@@ -16,6 +16,6 @@ done
 
 touch /connected
 
-[[ -n ${POST_CONNECT} ]] && eval ${POST_CONNECT}
+[[ -n ${POST_CONNECT} ]] && eval "${POST_CONNECT}"
 
 exit 0
