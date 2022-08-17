@@ -14,7 +14,6 @@ done
 for nord_host in $NORDVPN_WHITELIST_HOSTS; do
     echo "Whitelisting $nord_host"
 
-
     ips=$(dig +short "$nord_host")
     for ip in $ips; do
         iptables -A OUTPUT -p tcp -d "$ip" -j ACCEPT
