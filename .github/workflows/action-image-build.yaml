@@ -139,6 +139,7 @@ jobs:
 
       - name: Build container image for testing
         uses: docker/build-push-action@v3
+        if: ${{ steps.vars.outputs.chan_tests_enabled == 'true' }}
         with:
           build-args: |-
             VERSION=${{ steps.vars.outputs.chan_upstream_version }}
@@ -205,17 +206,17 @@ jobs:
           echo "::set-output name=message::💥 ${{ matrix.image.app }}-${{ matrix.image.channel }} (${{ steps.vars.outputs.chan_upstream_version }})"
           echo "::set-output name=color::0xFF0000"
 
-      # - name: Send Discord Webhook
-      #   uses: sarisia/actions-status-discord@v1
-      #   if: ${{ always() && inputs.sendNotification == 'true' }}
-      #   with:
-      #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
-      #     title: ${{ steps.build-failed.outputs.message || steps.build-success.outputs.message }}
-      #     # description: "Build and deploy to GitHub Pages"
-      #     # image: ${{ secrets.EMBED_IMAGE }}
-      #     color: ${{ steps.build-failed.outputs.color }}
-      #     username: GitHub Actions
-      #     # avatar_url: ${{ secrets.AVATAR_URL }}
+      - name: Send Discord Webhook
+        uses: sarisia/actions-status-discord@v1
+        if: ${{ always() && inputs.sendNotification == 'true' }}
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: ${{ steps.build-failed.outputs.message || steps.build-success.outputs.message }}
+          # description: "Build and deploy to GitHub Pages"
+          # image: ${{ secrets.EMBED_IMAGE }}
+          color: ${{ steps.build-failed.outputs.color }}
+          username: GitHub Actions
+          # avatar_url: ${{ secrets.AVATAR_URL }}
 
   # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
   build_success:
