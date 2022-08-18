@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:rolling@sha256:2c6a1fa6eb6cb23a65bc2644c01d55f64660bfee5f1734f135538ed672305279
+FROM ghcr.io/cdloh/ubuntu:rolling@sha256:d0968171d00b102bd9c18ac20cdab2212d30c863985664cd47ffc987b2a7c632
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
