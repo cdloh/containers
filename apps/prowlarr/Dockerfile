@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/alpine:rolling@sha256:7e2925a386dceec8bf8c7ed024392a212538576820ffbd9fa74a2f8abbfdb82a
+FROM ghcr.io/cdloh/alpine:rolling@sha256:020c63467465d63c5fc9a2ec67c4dc4e759abccc4883a844cb8c541bb820c5b3
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
