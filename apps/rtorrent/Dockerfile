@@ -8,7 +8,7 @@ ARG TARGETARCH
 ENV TARGETARCH=${TARGETARCH:-amd64}
 
 ENV RTORRENT__DEFAULT_CONFIG="true" \
-    RTORRENT__CONFIG_FILE="/config/rtorrent.rc" \
+    RTORRENT__CONFIG_FILE="/config/rtorrent.rc"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -19,9 +19,6 @@ RUN curl -fsSL -o /app/rtorrent \
         "https://github.com/jesec/rtorrent/releases/download/v${VERSION}/rtorrent-linux-${TARGETARCH}" \
     && chown -R root:root /app \
     && chmod -R 755 /app \
-    && mkdir -p "$(dirname "${RTORRENT__SOCKET}")" \
-    && chown -R kah:kah "$(dirname "${RTORRENT__SOCKET}")" \
-    && chmod -R 775 "$(dirname "${RTORRENT__SOCKET}")" \
     && rm -rf /tmp/*
 
 USER kah
