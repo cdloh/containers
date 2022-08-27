@@ -13,8 +13,6 @@ args+=("system.daemon.set=true")
 args+=("encoding.add=utf8")
 args+=("system.umask.set=0002")
 args+=("session.use_lock.set=no")
-args+=("network.scgi.open_local=${RTORRENT__SOCKET}")
-args+=("network.port_range.set=${RTORRENT__BT_PORT}-${RTORRENT__BT_PORT}")
 
 printf -v joined_args "%s," "${args[@]}"
 

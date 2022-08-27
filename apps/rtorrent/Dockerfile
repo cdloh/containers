@@ -9,8 +9,6 @@ ENV TARGETARCH=${TARGETARCH:-amd64}
 
 ENV RTORRENT__DEFAULT_CONFIG="true" \
     RTORRENT__CONFIG_FILE="/config/rtorrent.rc" \
-    RTORRENT__SOCKET="/sock/rtorrent.sock" \
-    RTORRENT__BT_PORT="50415"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
