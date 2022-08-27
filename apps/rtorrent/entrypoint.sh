@@ -14,6 +14,14 @@ args+=("encoding.add=utf8")
 args+=("system.umask.set=0002")
 args+=("session.use_lock.set=no")
 
+if [[ "${RTORRENT__DEFAULT_SOCKET}" == "true" ]]; then
+    args+=("network.scgi.open_local=${RTORRENT__SOCKET}")
+fi
+
+if [[ "${RTORRENT__DEFAULT_PORT}" == "true" ]]; then
+    args+=("network.port_range.set=${RTORRENT__BT_PORT}-${RTORRENT__BT_PORT}")
+fi
+
 printf -v joined_args "%s," "${args[@]}"
 
 #shellcheck disable=SC2086
