@@ -78,6 +78,7 @@ RUN \
         pv \
         tini \
         tzdata \
+        rsync \
         vim-tiny \
         unrar \
         unzip \

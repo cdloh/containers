@@ -49,8 +49,8 @@ RUN \
         pv \
         # 36 kB            # 3.3 MB      # 320 kB
         tini               tzdata        unzip \
-        # 16 kB            # 480 kB
-        util-linux         wget \
+        # 16 kB            # 480 kB      # 496 kB
+        util-linux         wget \        rsync \
     && \
     # 264 kB
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.14/main unrar
