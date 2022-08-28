@@ -49,6 +49,7 @@ RUN \
     && chmod -R 755 /app \
     && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc
 
+
 USER kah
 
 COPY ./apps/sonarr/config.xml.tmpl /app/config.xml.tmpl
