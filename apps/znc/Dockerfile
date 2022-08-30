@@ -1,4 +1,4 @@
 ARG VERSION
-FROM znc:1.8.1@sha256:654eccd63c1f57638acc488c46a42cd9c51a253b142541479563d39d444b3d23
+FROM znc:1.8.2@sha256:e7354c0cdd41ff8c23ffa67620cde02a26a3ca1580aab1599fc29f0e5014fa84
 
 RUN apk add --no-cache iptables
