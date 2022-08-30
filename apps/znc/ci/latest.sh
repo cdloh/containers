@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-printf "%s" "1.8.1"
+version=$(grep FROM apps/znc/Dockerfile  | sed -e 's/.*:\(.*\)@.*/\1/')
+printf "%s" "${version}"
