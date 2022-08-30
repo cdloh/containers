@@ -1,5 +1,5 @@
 {
-  "app": "alpine",
+  "app": "dante",
   "base": true,
   "channels": [
     {

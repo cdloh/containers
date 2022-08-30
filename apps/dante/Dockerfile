@@ -7,7 +7,7 @@ RUN set -x \
  && apk add dante-server=${VERSION} --no-cache
 
 # Basic config. No authentication
-COPY ./apps/danted/sockd.conf /etc/sockd.conf
+COPY ./apps/dante/sockd.conf /etc/sockd.conf
 
 # Default port
 EXPOSE 1080
