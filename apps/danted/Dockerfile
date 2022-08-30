@@ -6,6 +6,7 @@ RUN set -x \
     # Install dependencies.
  && apk add dante-server=${VERSION} --no-cache
 
-EXPOSE 1080
+COPY ./apps/danted/sockd.conf /etc/sockd.conf
 
+EXPOSE 1080
 CMD ["sockd"]
