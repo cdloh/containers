@@ -1,0 +1,11 @@
+---
+port:
+  # {tcp,tcp6,udp,udp6}:port_num
+  tcp:1080:
+    # required attributes
+    listening: true
+
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#process
+process:
+  sockd:
+    running: true
