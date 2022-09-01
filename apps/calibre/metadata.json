@@ -22,7 +22,7 @@
       ],
       "stable": true,
       "tests": {
-        "enabled": false,
+        "enabled": false,fd
       }
     }
   ]
