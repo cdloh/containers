@@ -23,6 +23,7 @@
       "stable": true,
       "tests": {
         "enabled": false,
+        "type": "web"
       }
     }
   ]
