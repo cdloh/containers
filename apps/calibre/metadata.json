@@ -22,7 +22,8 @@
       ],
       "stable": true,
       "tests": {
-        "enabled": false
+        "enabled": false,
+        "type": "web"
       }
     }
   ]
