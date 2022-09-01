@@ -13,6 +13,18 @@
         "enabled": true,
         "type": "web"
       }
+    },
+    {
+      "name": "bare",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "stable": true,
+      "tests": {
+        "enabled": true,
+        "type": "web"
+      }
     }
   ]
 }
