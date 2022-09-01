@@ -35,8 +35,8 @@ RUN \
     mkdir -p /opt/calibre \
     && \
     curl -fsSL "https://download.calibre-ebook.com/${VERSION}/calibre-${VERSION}-${ARCH}.txz" \
-        | tar Jxvf - -C /opt/calibre \
-    && /opt/calibre/calibre_postinstall \
+        | tar Jxvf - -C /app \
+    && /app/calibre_postinstall \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get autoremove -y \
     && apt-get clean \
@@ -45,8 +45,8 @@ RUN \
         /tmp/* \
         /var/lib/apt/lists/* \
         /var/tmp/ \
-    && chown -R root:root /opt/calibre \
-    && chmod -R 755 /opt/calibre \
+    && chown -R root:root /app \
+    && chmod -R 755 /app \
     && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc
 
 USER kah

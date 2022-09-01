@@ -28,13 +28,13 @@ RUN \
     mkdir -p /opt/calibre \
     && \
     curl -fsSL "https://download.calibre-ebook.com/${VERSION}/calibre-${VERSION}-${ARCH}.txz" \
-        | tar Jxvf - -C /opt/calibre \
-    && chown -R root:root /opt/calibre \
-    && chmod -R 755 /opt/calibre
+        | tar Jxvf - -C /app \
+    && chown -R root:root /app \
+    && chmod -R 755 /app
 
 
 ## Single layer deployed image ##
 FROM scratch
 
 # Add files from buildstage
-COPY --from=buildstage /opt/calibre /
+COPY --from=buildstage /app /
