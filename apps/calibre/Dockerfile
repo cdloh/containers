@@ -23,13 +23,14 @@ RUN \
     apt-get -qq update \
     && \
     apt-get -qq install -y \
-        libxkbcommon0 \
-        libopengl0 \
         libegl1 \
-        python3 \
-        xz-utils \
         libfontconfig1 \
         libgl1-mesa-glx \
+        libopengl0 \
+        libxdamage1 \
+        libxkbcommon0 \
+        python3 \
+        xz-utils \
     && \
     mkdir -p /opt/calibre \
     && \
