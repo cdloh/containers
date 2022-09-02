@@ -38,3 +38,5 @@ FROM scratch
 
 # Add files from buildstage
 COPY --from=buildstage /app /
+
+LABEL org.opencontainers.image.source="https://github.com/kovidgoyal/calibre"
