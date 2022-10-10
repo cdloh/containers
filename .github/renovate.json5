@@ -29,13 +29,13 @@
       "commitMessagePrefix": "📣 "
     },
     {
-      "description": "Auto merge ZNC container digests and patches",
+      "description": "Auto merge calibre-bare changes",
       "matchDatasources": ["docker"],
       "automerge": true,
       "automergeType": "branch",
       "requiredStatusChecks": null,
-      "matchUpdateTypes": ["digest", "patch"],
-      "matchPackagePatterns": ["znc"]
+      "matchUpdateTypes": ["*"],
+      "matchPackagePatterns": ["ghcr.io/cdloh/calibre-bare"]
     },
   ],
   "regexManagers": [
