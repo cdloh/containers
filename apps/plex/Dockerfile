@@ -1,7 +1,6 @@
-FROM ghcr.io/cdloh/ubuntu:rolling@sha256:b69a089cb8f53a0219649b1f606f97ff33911d5baec3f518cfb0e3e0fa256bac
+FROM ghcr.io/cdloh/ubuntu:jammy-20221101@sha256:8668f8ac874067554d5ff130be352a781d712a79cec6db406191251092bdc11b
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
@@ -12,48 +11,30 @@ ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
     PLEX_MEDIA_SERVER_USER="kah" \
     PLEX_MEDIA_SERVER_INFO_VENDOR="Docker" \
-    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (k8s-at-home)"
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (cdloh)"
 
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
-    apt-get -qq update \
-    && \
-    apt-get -qq install -y \
-        gnupg2 \
-    && \
     case "${TARGETPLATFORM}" in \
         'linux/amd64') \
-            curl -sL https://repositories.intel.com/graphics/intel-graphics.key | apt-key add - \
-            && echo 'deb [arch=amd64] https://repositories.intel.com/graphics/ubuntu focal main' > /etc/apt/sources.list.d/intel.list \
-            && \
             export ARCH='amd64'; \
-            export EXTRA_INSTALL_ARG='intel-opencl-icd=21.49.21786+i643~u20.04'; \
         ;; \
         'linux/arm64') \
             export ARCH='arm64'; \
-            export EXTRA_INSTALL_ARG=''; \
         ;; \
     esac \
     && \
     apt-get -qq update \
     && \
     apt-get -qq install -y \
-        aria2 \
         uuid-runtime \
         xmlstarlet \
         ca-certificates \
-        ${EXTRA_INSTALL_ARG} \
     && \
-    echo "Using curl or wget to download the plex debian package result in a qemu failure, why? I dunno" \
-    && \
-    aria2c -d /tmp -o plex.deb \
+    curl -fsSL -o /tmp/plex.deb \
         "${PLEX_DOWNLOAD}/${VERSION}/debian/plexmediaserver_${VERSION}_${ARCH}.deb" \
     && \
     dpkg -i --force-confold /tmp/plex.deb \
-    && \
-    apt-get remove -y aria2 gnupg2 \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get autoremove -y \
     && apt-get clean \

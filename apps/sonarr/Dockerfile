@@ -1,7 +1,6 @@
-FROM ghcr.io/cdloh/ubuntu:rolling@sha256:b69a089cb8f53a0219649b1f606f97ff33911d5baec3f518cfb0e3e0fa256bac
+FROM ghcr.io/cdloh/ubuntu:jammy-20221101@sha256:8668f8ac874067554d5ff130be352a781d712a79cec6db406191251092bdc11b
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
@@ -10,8 +9,6 @@ ENV \
     SONARR__BRANCH="${CHANNEL}" \
     SONARR__PORT="8989" \
     SONARR__ANALYTICS_ENABLED="False"
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008,DL3015,SC2086
 RUN \
@@ -32,7 +29,7 @@ RUN \
     curl -fsSL "https://download.sonarr.tv/v3/${SONARR__BRANCH}/${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux.tar.gz" \
         | tar xzf - -C /app --strip-components=1 \
     && \
-    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[Team k8s-at-home](https://github.com/k8s-at-home)" "${SONARR__BRANCH}" "${VERSION}" > /app/package_info \
+    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[cdloh](https://github.com/cdloh)" "${SONARR__BRANCH}" "${VERSION}" > /app/package_info \
     && \
     gpgconf --kill all \
     && apt-get remove -y gnupg \
