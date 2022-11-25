@@ -1,7 +1,6 @@
-FROM ghcr.io/cdloh/alpine:rolling@sha256:ff764e599f4cd1c8e547a1ae33844df40509bcc0d4bd8522b0c05f0508bb5c7f
+FROM ghcr.io/cdloh/alpine:3.17.0@sha256:7d4b2a50b637a844c0c8c1b7c3b4399a1450822bf0eae081ef45549410c60201
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
@@ -12,8 +11,6 @@ ENV \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     CRYPTOGRAPHY_DONT_BUILD_RUST=1
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
     curl -fsSL -o /tmp/nzbget.run \
