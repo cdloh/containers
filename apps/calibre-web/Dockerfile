@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/calibre-bare:6.7.1 as calibre
+FROM ghcr.io/cdloh/calibre-bare:6.9.0 as calibre
 
 FROM ghcr.io/cdloh/ubuntu:jammy-20221101@sha256:8668f8ac874067554d5ff130be352a781d712a79cec6db406191251092bdc11b
 
@@ -25,7 +25,7 @@ RUN \
         libegl1 \
         libfontconfig1 \
         libgl1-mesa-glx \
-        libldap-2.4-2 \
+        libldap-2.5-0 \
         libnss3 \
         libopengl0 \
         libsasl2-2 \
