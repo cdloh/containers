@@ -1,13 +1,10 @@
-FROM ghcr.io/cdloh/ubuntu:rolling@sha256:b69a089cb8f53a0219649b1f606f97ff33911d5baec3f518cfb0e3e0fa256bac as builder
+FROM ghcr.io/cdloh/ubuntu:jammy-20221101@sha256:8668f8ac874067554d5ff130be352a781d712a79cec6db406191251092bdc11b as builder
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
 WORKDIR /tmp
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
@@ -39,18 +36,15 @@ RUN \
         /tmp/opt/emby-server/etc \
         /tmp/opt/emby-server/extra/lib/*
 
-FROM ghcr.io/cdloh/ubuntu:rolling@sha256:b69a089cb8f53a0219649b1f606f97ff33911d5baec3f518cfb0e3e0fa256bac
+FROM ghcr.io/cdloh/ubuntu:jammy-20221101@sha256:8668f8ac874067554d5ff130be352a781d712a79cec6db406191251092bdc11b
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
 ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility"
 
 USER root
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
