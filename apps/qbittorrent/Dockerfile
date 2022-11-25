@@ -1,17 +1,18 @@
-FROM ghcr.io/cdloh/alpine:rolling@sha256:ff764e599f4cd1c8e547a1ae33844df40509bcc0d4bd8522b0c05f0508bb5c7f
+FROM ghcr.io/cdloh/alpine:3.17.0@sha256:7d4b2a50b637a844c0c8c1b7c3b4399a1450822bf0eae081ef45549410c60201
 
 ARG TARGETPLATFORM
-ARG BUILDPLATFORM
 ARG VERSION
 ARG CHANNEL
 
 ENV QBITTORRENT__PORT=8080 \
     QBITTORRENT__BT_PORT=50413
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 #hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates geoip p7zip python3 qbittorrent-nox~"${VERSION}"
+RUN \
+    apk add --no-cache ca-certificates geoip p7zip python3 \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
+    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community qt6-qtbase-sqlite qbittorrent-nox~"${VERSION}"
 #hadolint ignore=DL3059
 RUN chown -R root:root /usr/bin/qbittorrent-nox \
     && chmod -R 755 /usr/bin/qbittorrent-nox \
