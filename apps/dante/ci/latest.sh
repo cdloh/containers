@@ -1,3 +1,3 @@
-# renovate: datasource=repology depName=alpine_3_16/dante-server versioning=loose
-version="1.4.3-r1"
+# renovate: datasource=repology depName=alpine_3_17/dante-server versioning=loose
+version="1.4.3-r2"
 printf "%s" "${version}"
