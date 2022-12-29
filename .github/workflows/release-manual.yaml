@@ -10,7 +10,7 @@ on:
         required: true
       channels:
         description: "Channels (ex: master,develop)"
-        default: ""
+        default: "stable"
         required: true
       push:
         description: "Push"
