@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/alpine:3.17.2@sha256:8957fe63b9aa81da940c448b757c0b02dbebfeef93daa2cdc3c8a387a962b2df
+FROM ghcr.io/cdloh/alpine:3.17.2@sha256:9da12aa352b644a39cb02e7d5082956d9a71c5acbc3a984aac058f2b7a1a483f
 
 ARG VERSION
 
