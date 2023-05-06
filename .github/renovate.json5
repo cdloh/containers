@@ -34,7 +34,7 @@
       "automerge": true,
       "automergeType": "branch",
       "requiredStatusChecks": null,
-      "matchUpdateTypes": ["*"],
+      "matchUpdateTypes": ["minor", "patch", "stage", "digest"],
       "matchPackagePatterns": ["ghcr.io/cdloh/calibre-bare"]
     },
   ],
