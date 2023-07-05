@@ -51,7 +51,7 @@ fi
 
 #shellcheck disable=SC2086
 exec \
-    /app/Prowlarr \
+    /app/bin/Prowlarr \
         --nobrowser \
         --data=/config \
         "$@"

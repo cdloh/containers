@@ -11,13 +11,15 @@ ENV HOME=/config \
     TRANSMISSION_WEB_HOME=/app/web
 
 #hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates geoip p7zip python3 transmission-cli~"${VERSION}" transmission-daemon~"${VERSION}"
+RUN apk add --no-cache ca-certificates geoip p7zip python3 \
+    && apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community transmission-cli~"${VERSION}" transmission-daemon~"${VERSION}"
+
 #hadolint ignore=DL3059
 RUN chown -R root:root /usr/bin/transmission* \
     && chmod -R 755 /usr/bin/transmission* \
     && ln -s /usr/bin/transmission-cli /app/transmission-cli \
     && ln -s /usr/bin/transmission-daemon /app/transmission-daemon \
-    && ln -s /usr/share/transmission/web /app/web \
+    && ln -s /usr/share/transmission/public_html /app/web \
     && rm -rf /tmp/*
 
 USER kah
