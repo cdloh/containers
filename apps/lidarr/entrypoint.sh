@@ -51,7 +51,7 @@ fi
 
 #shellcheck disable=SC2086
 exec \
-    /app/Lidarr \
+    /app/bin/Lidarr \
         --nobrowser \
         --data=/config \
         "$@"
