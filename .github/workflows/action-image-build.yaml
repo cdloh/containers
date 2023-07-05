@@ -200,7 +200,7 @@ jobs:
 
       - name: Send Discord Webhook
         uses: sarisia/actions-status-discord@v1
-        if: ${{ always() && inputs.sendNotification == 'true' }}
+        if: ${{ always() && (steps.release.outcome == 'failure' || steps.dgoss.outcome == 'failure') && inputs.sendNotification == 'true' }}
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           title: ${{ steps.build-failed.outputs.message || steps.build-success.outputs.message }}
