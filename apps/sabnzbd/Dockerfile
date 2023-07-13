@@ -1,5 +1,6 @@
-FROM ghcr.io/cdloh/alpine:3.17.4@sha256:063ec4426b3cc4b49a516f4111c21621a31214eef9a3321118b8fdf3e8c8dc6b
+FROM ghcr.io/cdloh/par2cmdline-turbo:1.0.1 as par2cmdline-turbo
 
+FROM ghcr.io/cdloh/alpine:3.18.2@sha256:bc77ba9976d0b784daea3f2fb60eca5c6c984896958ddceecb337d2bd2e28e5e
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
@@ -14,6 +15,7 @@ ENV \
 
 ENV SABNZBD__PORT=8080
 
+# Download source
 RUN \
     curl -fsSL "https://github.com/sabnzbd/sabnzbd/releases/download/${VERSION}/SABnzbd-${VERSION}-src.tar.gz" \
         | tar xzf - -C /app --strip-components=1 \
@@ -22,15 +24,14 @@ RUN \
     && chmod -R 755 /app \
     && rm -rf /tmp/*
 
-#hadolint ignore=DL3018,DL3013
+# Install sabnzbd
 RUN \
     # Keep py3-pip installed
     \
     apk add --no-cache \
         ca-certificates \
         python3 \
-        py3-pip \ 
-        par2cmdline \
+        py3-pip \
         p7zip \
     && \
     apk add --no-cache --virtual=.build-deps \
@@ -49,6 +50,12 @@ RUN \
         /root/.cache \
         /root/.cargo \
         /tmp/*
+
+# Install par2cmdline-turbo
+COPY --from=par2cmdline-turbo /usr/local/bin/par2 /usr/local/bin/par2
+RUN ln -s /usr/local/bin/par2 /usr/local/bin/par2create \
+    && ln -s /usr/local/bin/par2 /usr/local/bin/par2repair \
+    && ln -s /usr/local/bin/par2 /usr/local/bin/par2verify
 
 USER kah
 COPY ./apps/sabnzbd/sabnzbd.ini /app/sabnzbd.ini
