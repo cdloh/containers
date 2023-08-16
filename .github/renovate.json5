@@ -35,7 +35,7 @@
       "automergeType": "branch",
       "requiredStatusChecks": null,
       "matchUpdateTypes": ["minor", "patch", "stage", "digest"],
-      "matchPackagePatterns": ["ghcr.io/cdloh/calibre-bare"]
+      "matchPackagePatterns": ["ghcr.io/cdloh/calibre-bare", "ghcr.io/cdloh/par2cmdline-turbo"]
     },
   ],
   "regexManagers": [
