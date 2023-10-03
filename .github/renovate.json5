@@ -37,6 +37,12 @@
       "matchUpdateTypes": ["minor", "patch", "stage", "digest"],
       "matchPackagePatterns": ["ghcr.io/cdloh/calibre-bare", "ghcr.io/cdloh/par2cmdline-turbo"]
     },
+    {
+      "versioning": "ubuntu",
+      "matchPackageNames": [
+        "ghcr.io/cdloh/ubuntu",
+      ]
+    },
   ],
   "regexManagers": [
     {
