@@ -27,7 +27,6 @@ RUN \
             && \
             export ARCH='arm64'; \
             export EXTRA_INSTALL_ARG='libomxil-bellagio0 libomxil-bellagio-bin libraspberrypi0'; \
-            unset NVIDIA_DRIVER_CAPABILITIES; \
         ;; \
     esac \
     && \
@@ -37,13 +36,13 @@ RUN \
         ca-certificates \
         ${EXTRA_INSTALL_ARG} \
     && \
-    curl -fsSL "https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key" | apt-key add - && \
-    echo "deb [arch=${ARCH}] https://repo.jellyfin.org/ubuntu jammy main" | tee /etc/apt/sources.list.d/jellyfin.list && \
-    apt-get -qq update && \
-    apt-get -qq install -y \
+    curl -fsSL "https://repo.jellyfin.org/ubuntu/jellyfin_team.gpg.key" | apt-key add - \
+    && echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | tee /etc/apt/sources.list.d/jellyfin.list \
+    && apt-get -qq update \
+    && apt-get -qq install -y \
         jellyfin-server="${VERSION}*" \
         jellyfin-web \
-        jellyfin-ffmpeg5 \
+        jellyfin-ffmpeg6 \
     && \
     apt-get remove -y gnupg2 \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
@@ -54,7 +53,7 @@ RUN \
         /tmp/* \
         /var/lib/apt/lists/* \
         /var/tmp/ \
-    && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc
+    && printf "umask %d\n" "${UMASK}" >> /etc/bash.bashrc
 
 USER kah
 COPY ./apps/jellyfin/entrypoint.sh /entrypoint.sh
