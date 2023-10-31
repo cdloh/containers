@@ -12,7 +12,7 @@ ENV HOME=/config \
 
 #hadolint ignore=DL3018
 RUN apk add --no-cache ca-certificates geoip p7zip python3 \
-    && apk add --no-cache transmission-cli~"${VERSION}" transmission-daemon~"${VERSION}"
+    transmission-cli~"${VERSION}" transmission-daemon~"${VERSION}"
 
 #hadolint ignore=DL3059
 RUN chown -R root:root /usr/bin/transmission* \

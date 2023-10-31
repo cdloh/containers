@@ -37,6 +37,8 @@ RUN \
     apk add --no-cache \
         # 656 kB           # 1.28 MB     # 632 kB
         ca-certificates    bash          bind-tools \
+        # 1.07 MB
+        coreutils \
         # 256 kB           # 156 kB      # 40 kB
         curl               iputils       jo \
         # 564 kB           # 200 kB      # 316 kB
@@ -60,7 +62,7 @@ RUN \
     && chown -R kah:kah /config \
     && chmod -R 775 /config \
     && printf "/bin/bash /scripts/greeting.sh\n" > /etc/profile.d/greeting.sh \
-    && printf "umask %d" "${UMASK}" > /etc/profile.d/umask.sh \
+    && printf "umask %d\n" "${UMASK}" > /etc/profile.d/umask.sh \
     && ln -s /usr/bin/vi   /usr/local/bin/vi \
     && ln -s /usr/bin/vi   /usr/local/bin/vim \
     && ln -s /usr/bin/nano /usr/local/bin/nano \
