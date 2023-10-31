@@ -166,14 +166,14 @@ jobs:
             VERSION=${{ steps.vars.outputs.chan_upstream_version }}
             CHANNEL=${{ matrix.image.channel }}
           labels: |-
-            ${{ steps.vars.outputs.chan_label_type }}.created="${{ steps.vars.outputs.chan_build_date }}"
-            ${{ steps.vars.outputs.chan_label_type }}.title="${{ matrix.image.app }} (${{ matrix.image.channel }})"
-            ${{ steps.vars.outputs.chan_label_type }}.version="${{ steps.vars.outputs.chan_upstream_version }}"
-            ${{ steps.vars.outputs.chan_label_type }}.authors="Callum Loh <callumloh@gmail.com>"
-            ${{ steps.vars.outputs.chan_label_type }}.url="https://github.com/cdloh/containers/apps/${{ matrix.image.app }}"
-            ${{ steps.vars.outputs.chan_label_type }}.build.url="https://github.com/cdloh/containers/actions/runs/${{ github.run_id }}"
-            ${{ steps.vars.outputs.chan_label_type }}.documentation="https://github.com/cdloh/containers/apps/${{ matrix.image.app }}/README.md"
-            ${{ steps.vars.outputs.chan_label_type }}.revision="${{ github.sha }}"
+            ${{ steps.vars.outputs.chan_label_type }}.created=${{ steps.vars.outputs.chan_build_date }}
+            ${{ steps.vars.outputs.chan_label_type }}.title=${{ matrix.image.app }} (${{ matrix.image.channel }})
+            ${{ steps.vars.outputs.chan_label_type }}.version=${{ steps.vars.outputs.chan_upstream_version }}
+            ${{ steps.vars.outputs.chan_label_type }}.authors=Callum Loh <callumloh@gmail.com>
+            ${{ steps.vars.outputs.chan_label_type }}.url=https://github.com/cdloh/containers/apps/${{ matrix.image.app }}
+            ${{ steps.vars.outputs.chan_label_type }}.build.url=https://github.com/cdloh/containers/actions/runs/${{ github.run_id }}
+            ${{ steps.vars.outputs.chan_label_type }}.documentation=https://github.com/cdloh/containers/apps/${{ matrix.image.app }}/README.md
+            ${{ steps.vars.outputs.chan_label_type }}.revision=${{ github.sha }}
           context: .
           platforms: ${{ steps.vars.outputs.chan_platforms }}
           file: ${{ steps.vars.outputs.chan_dockerfile }}
