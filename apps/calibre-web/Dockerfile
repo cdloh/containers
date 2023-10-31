@@ -18,9 +18,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008,DL3015,SC2086
 RUN \
-    apt-get -qq update \
+    apt-get update \
     && \
-    apt-get -qq install -y \
+    apt-get install -y \
         imagemagick \
         libegl1 \
         libfontconfig1 \
@@ -40,14 +40,14 @@ RUN \
         python3-pkg-resources \
     && \
     # Dev
-    apt-get -qq install -y \
+    apt-get install -y \
         libldap2-dev \
         libsasl2-dev \
         python3-dev \
         gcc \
         g++ \
     && \
-    curl -fsSL https://github.com/janeczku/calibre-web/releases/download/${VERSION}/calibre-web-${VERSION}.tar.gz \
+    curl -fsSL https://github.com/janeczku/calibre-web/archive/refs/tags/${VERSION}.tar.gz \
         | tar xzf - -C /app --strip-components=1 \
     && pip install --upgrade pip \
     && pip install --upgrade --requirement /app/requirements.txt \
