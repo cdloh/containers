@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:jammy-20231004@sha256:f7e8378d3f4fbf7a45ecfdce0bb52f1701f4fdecaed25133c79c677b0981fa24
+FROM ghcr.io/cdloh/ubuntu:jammy-20231004@sha256:16aa21c5ef48401279b56ccbe440553a8ccfe563e92c8afdac51539d96c12165
 LABEL maintainer="Callum Loh"
 
 ARG TARGETPLATFORM
