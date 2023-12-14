@@ -10,6 +10,7 @@ ENV \
     PIP_ROOT_USER_ACTION=ignore \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_BREAK_SYSTEM_PACKAGES=1 \
     CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
 ENV MYLAR3__PORT=8090
@@ -29,7 +30,7 @@ RUN \
     apk add --no-cache \
         ca-certificates \
         python3 \
-        py3-pip \ 
+        py3-pip \
         # runtime tools
         jpeg \
         libwebp-tools \
