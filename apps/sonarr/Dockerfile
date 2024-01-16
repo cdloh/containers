@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:jammy-20231128@sha256:cc18a57db6a0170c01a541167ad33d17ff83919a2f85077129e280fe6d8aab7d
+FROM ghcr.io/cdloh/alpine:3.19.0@sha256:99cd9b1b7f9ef6e9f95c3f408caafa2f100c4e4dffafaba636e0c98fb1b9f04f
 
 ARG TARGETPLATFORM
 ARG VERSION
@@ -10,43 +10,31 @@ ENV \
     SONARR__PORT="8989" \
     SONARR__ANALYTICS_ENABLED="False"
 
-# hadolint ignore=DL3008,DL3015,SC2086
+#hadolint ignore=DL3018
+RUN apk add --no-cache ca-certificates icu-libs libintl sqlite-libs xmlstarlet
+#hadolint ignore=DL3059
 RUN \
-    apt-get -qq update \
-    && apt-get -qq install -y gnupg \
-    && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-    && echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | tee /etc/apt/sources.list.d/mono-official.list \
-    && apt-get -qq update \
-    && \
-    apt-get -qq install -y \
-        ca-certificates \
-        mono-complete \
-        ca-certificates-mono \
-        libmediainfo0v5 \
-        xmlstarlet \
+    case "${TARGETPLATFORM}" in \
+        'linux/amd64') export ARCH='x64' ;; \
+        'linux/arm64') export ARCH='arm64' ;; \
+    esac \
     && \
     mkdir -p /app/bin \
     && \
-    curl -fsSL "https://download.sonarr.tv/v3/${SONARR__BRANCH}/${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux.tar.gz" \
-        | tar xzf - -C /app/bin --strip-components=1 \
+    case "${CHANNEL}" in \
+        'main') export CURL_URL="https://download.sonarr.tv/v4/${SONARR__BRANCH}/${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux-musl-${ARCH}.tar.gz" ;; \
+        'develop') export CURL_URL="https://github.com/Sonarr/Sonarr/releases/download/v${VERSION}/Sonarr.develop.${VERSION}.linux-musl-${ARCH}.tar.gz" ;; \
+    esac \
     && \
-    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[onedr0p](https://github.com/onedr0p)\n" "${SONARR__BRANCH}" "${VERSION}" > /app/package_info \
-    && \
-    gpgconf --kill all \
-    && apt-get remove -y gnupg \
-    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-    && apt-get autoremove -y \
-    && apt-get clean \
+    curl -fsSL $CURL_URL | tar xzf - -C /app/bin --strip-components=1 \
     && \
     rm -rf \
         /app/bin/Sonarr.Update \
-        /tmp/* \
-        /var/lib/apt/lists/* \
-        /var/tmp/ \
+    && \
+    printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[cdloh](https://github.com/cdloh)\n" "${SONARR__BRANCH}" "${VERSION}" > /app/package_info \
     && chown -R root:root /app \
     && chmod -R 755 /app \
-    && printf "umask %d\n" "${UMASK}" >> /etc/bash.bashrc
+    && rm -rf /tmp/*
 
 USER kah
 
@@ -54,4 +42,4 @@ COPY ./apps/sonarr/config.xml.tmpl /app/config.xml.tmpl
 COPY ./apps/sonarr/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
-LABEL org.opencontainers.image.source="https://github.com/Sonarr/Sonarr"
+LABEL org.opencontainers.image.title="${SONARR__INSTANCE_NAME} (${SONARR__BRANCH})"
