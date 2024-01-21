@@ -21,12 +21,7 @@ RUN \
     && \
     mkdir -p /app/bin \
     && \
-    case "${CHANNEL}" in \
-        'main') export CURL_URL="https://download.sonarr.tv/v4/${SONARR__BRANCH}/${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux-musl-${ARCH}.tar.gz" ;; \
-        'develop') export CURL_URL="https://github.com/Sonarr/Sonarr/releases/download/v${VERSION}/Sonarr.develop.${VERSION}.linux-musl-${ARCH}.tar.gz" ;; \
-    esac \
-    && \
-    curl -fsSL $CURL_URL | tar xzf - -C /app/bin --strip-components=1 \
+    curl -fsSL "https://github.com/Sonarr/Sonarr/releases/download/v${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux-musl-${ARCH}.tar.gz" | tar xzf - -C /app/bin --strip-components=1 \
     && \
     rm -rf \
         /app/bin/Sonarr.Update \
