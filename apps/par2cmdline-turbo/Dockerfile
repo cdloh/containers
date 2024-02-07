@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/alpine:3.19.0@sha256:99cd9b1b7f9ef6e9f95c3f408caafa2f100c4e4dffafaba636e0c98fb1b9f04f as build
+FROM ghcr.io/cdloh/alpine:3.19.1@sha256:eb1014101364aba400f9c0bf38cf916cd2760f198d29467891bafcc8d46dd497 as build
 ARG TARGETARCH
 ARG VERSION
 WORKDIR /tmp
@@ -19,7 +19,7 @@ RUN \
     && make \
     && make install
 
-FROM ghcr.io/cdloh/alpine:3.19.0@sha256:99cd9b1b7f9ef6e9f95c3f408caafa2f100c4e4dffafaba636e0c98fb1b9f04f
+FROM ghcr.io/cdloh/alpine:3.19.1@sha256:eb1014101364aba400f9c0bf38cf916cd2760f198d29467891bafcc8d46dd497
 COPY --from=build /usr/local/bin/par2 /usr/local/bin/par2
 RUN /usr/local/bin/par2 --help
 CMD ["/usr/local/bin/par2"]
