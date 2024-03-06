@@ -1,6 +1,6 @@
 FROM ghcr.io/cdloh/calibre-bare:7.6.0 as calibre
 
-FROM ghcr.io/cdloh/ubuntu:jammy-20240212@sha256:6169789ce1d1c255fac4c21b62e3afe07c8b3b2cc60927ec991ae04e0cd0a552
+FROM ghcr.io/cdloh/ubuntu:jammy-20240227@sha256:60369ba686553205a8454fbbd2ff54db68ccb72e67aeb913fd1e53717d191e65
 
 ENV \
     PYTHONDONTWRITEBYTECODE=1 \
