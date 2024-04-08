@@ -29,8 +29,9 @@ RUN apk add --no-cache \
         NUMBER_COMMITS_TO_REVERT=$(( $(git rev-list --count --first-parent HEAD) - $(echo "${VERSION}" | cut -d "." -f3) )); \
         git checkout "master~${NUMBER_COMMITS_TO_REVERT}"; \
     fi \
-    # cleanup git dir to skip version checks
-    && rm -rf .git \
+    && LAZYLIB_COMMIT_VERSION=$(git rev-parse HEAD) \
+    && echo "LAZYLIBRARIAN_VERSION = \"Package\"" > lazylibrarian/version.py \
+    && echo "LAZYLIBRARIAN_HASH=\"$LAZYLIB_COMMIT_VERSION\"" >> lazylibrarian/version.py \
     && pip install --upgrade --no-cache-dir . \
     && pip install --upgrade --no-cache-dir python-Levenshtein \
     && apk del --purge .build-deps \
