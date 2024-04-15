@@ -1,0 +1,12 @@
+---
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#file
+file:
+  /usr/local/bin/m4b-tool:
+    exists: true
+
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#command
+command:
+  m4b-tool:
+    exit-status: 0
+    exec: "/usr/local/bin/m4b-tool list"
+    stderr: []
