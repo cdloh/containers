@@ -11,7 +11,8 @@ RUN \
         'linux/arm64') export ARCH='arm64' ;; \
     esac \
     && \
-    mkdir -p /app/bin \
+    mkdir -p /app/Libation \
+    && chown -R kah:kah /app/Libation \
     && \
     curl -fsSL "https://github.com/rmcrackan/Libation/releases/download/v${VERSION}/Libation.${VERSION}-linux-chardonnay-${ARCH}.deb" -o /app/libation.deb \
     && dpkg -i libation.deb \
@@ -22,6 +23,7 @@ USER kah
 
 
 RUN /usr/bin/libationcli version
+COPY ./apps/libation/appsettings.json /app/Libation/appsettings.json
 CMD ["/usr/bin/libationcli"]
 
 
