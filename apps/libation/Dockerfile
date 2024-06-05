@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:jammy-20240427@sha256:7aaf64ea82bfbd0accaecbfb4657c82e7745bcbc333a8c5d56250b7bb184d61e
+FROM ghcr.io/cdloh/ubuntu:jammy-20240530@sha256:e87013cb295c132beb0dc987a40d2aa9d802ae6a427eae3f6b7cefaa13358bc5
 
 ARG TARGETPLATFORM
 ARG VERSION
