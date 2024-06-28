@@ -1,7 +1,7 @@
-FROM public.ecr.aws/docker/library/ubuntu:${VERSION}
 ARG VERSION
 ARG CHANNEL
 ARG TARGETPLATFORM
+FROM public.ecr.aws/docker/library/ubuntu:${VERSION}
 ENV TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
 
 # DEBIAN_FRONTEND: https://askubuntu.com/questions/972516/debian-frontend-environment-variable

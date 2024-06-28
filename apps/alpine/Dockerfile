@@ -1,7 +1,7 @@
-FROM public.ecr.aws/docker/library/alpine:${VERSION}
 ARG VERSION
 ARG CHANNEL
 ARG TARGETPLATFORM
+FROM public.ecr.aws/docker/library/alpine:${VERSION}
 ENV TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
 
 ENV UMASK="0002" \
