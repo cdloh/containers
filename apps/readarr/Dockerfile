@@ -34,7 +34,6 @@ RUN \
 
 USER kah
 
-COPY ./apps/readarr/config.xml.tmpl /app/config.xml.tmpl
 COPY ./apps/readarr/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
