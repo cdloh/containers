@@ -7,8 +7,6 @@ file:
     exists: true
   /scripts/vpn.sh:
     exists: true
-  /usr/local/bin/envsubst:
-    exists: true
 
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#group
 group:

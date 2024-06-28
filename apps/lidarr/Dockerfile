@@ -35,7 +35,6 @@ RUN \
 
 USER kah
 
-COPY ./apps/lidarr/config.xml.tmpl /app/config.xml.tmpl
 COPY ./apps/lidarr/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
