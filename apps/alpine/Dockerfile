@@ -1,23 +1,3 @@
-ARG VERSION
-FROM docker.io/library/alpine:3.20.0 as builder
-ARG VERSION
-ARG TARGETOS
-ARG TARGETARCH
-ARG TARGETVARIANT=""
-ARG TARGETPLATFORM
-ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
-    GOOS=${TARGETOS} \
-    GOARCH=${TARGETARCH} \
-    GOARM=${TARGETVARIANT} \
-    GOPATH=/go
-ENV PATH $GOPATH/bin:$PATH
-#hadolint ignore=DL3018
-RUN \
-    apk add --no-cache go upx \
-    && go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@latest \
-    && upx --ultra-brute /go/bin/envsubst
-
 FROM public.ecr.aws/docker/library/alpine:${VERSION}
 ARG VERSION
 ARG CHANNEL
@@ -72,5 +52,4 @@ RUN \
 
 VOLUME ["/config"]
 COPY ./apps/alpine/scripts /scripts
-COPY --from=builder /go/bin/envsubst /usr/local/bin/envsubst
 ENTRYPOINT ["/sbin/tini", "--"]
