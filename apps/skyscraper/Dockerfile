@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:jammy-20240530@sha256:e7cee9800dc018ec8def5f88852d506aa6efb9f6040c5208586c21e9e0cedc09 as build
+FROM ghcr.io/cdloh/ubuntu:jammy-20240808@sha256:ed620cdbc85ce5893e4caf04086cdcd3e0cbd662370364075991cef4845e8515 as build
 ARG TARGETPLATFORM
 ARG VERSION
 ARG CHANNEL
@@ -18,7 +18,7 @@ RUN \
 
 
 
-FROM ghcr.io/cdloh/ubuntu:jammy-20240530@sha256:e7cee9800dc018ec8def5f88852d506aa6efb9f6040c5208586c21e9e0cedc09
+FROM ghcr.io/cdloh/ubuntu:jammy-20240808@sha256:ed620cdbc85ce5893e4caf04086cdcd3e0cbd662370364075991cef4845e8515
 
 RUN \
     apt-get -qq update && \
