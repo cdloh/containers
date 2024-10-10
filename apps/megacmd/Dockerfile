@@ -4,7 +4,7 @@ ARG VERSION
 
 RUN set -x \
     # Install megatools
- && apk add megacmd=${VERSION} --no-cache
+ && apk add screen megacmd=${VERSION} --no-cache
 
 USER kah
 
