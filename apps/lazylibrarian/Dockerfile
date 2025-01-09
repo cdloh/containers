@@ -17,6 +17,7 @@ RUN apk add --no-cache \
         ca-certificates \
         python3 \
         py3-cffi \
+        py3-parsing \
     && \
     apk add --no-cache --virtual=.build-deps \
         build-base \
