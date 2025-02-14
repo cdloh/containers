@@ -118,6 +118,9 @@ jobs:
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v3
+        with:
+          ## Temporary due to bug in qemu: https://github.com/docker/setup-qemu-action/issues/198 https://github.com/tonistiigi/binfmt/issues/240
+          image: tonistiigi/binfmt:qemu-v7.0.0-28
 
       - name: Setup Docker Buildx
         id: buildx
