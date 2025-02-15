@@ -13,7 +13,7 @@ RUN set -x \
         ;; \
     esac \
     # Install megatools
- && curl -fsSL "https://megatools.megous.com/builds/builds/megatools-${VERSION}-linux-${ARCH}.tar.gz" \
+ && curl -fsSL "https://xff.cz/megatools/builds/builds/megatools-${VERSION}-linux-${ARCH}.tar.gz" \
     | tar xzf - -C /tmp \
  && mv "/tmp/megatools-${VERSION}-linux-${ARCH}/megatools" "/usr/local/bin/megatools" \
  && rm -rf "/tmp/megatools-${VERSION}-linux-${ARCH}"
