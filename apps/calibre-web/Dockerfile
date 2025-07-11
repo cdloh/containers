@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/calibre-bare:8.5.0 as calibre
+FROM ghcr.io/cdloh/calibre-bare:8.6.0 as calibre
 
 FROM ghcr.io/cdloh/ubuntu:jammy-20250619@sha256:6022cea286428a606690528c8f62b8aec8d3c837b5f5127929c8e494f1f84a47
 
