@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/ubuntu:jammy-20250619@sha256:6022cea286428a606690528c8f62b8aec8d3c837b5f5127929c8e494f1f84a47 as buildstage
+FROM ghcr.io/cdloh/ubuntu:jammy-20250730@sha256:12f00935b8607c93149bf13cfa6faae84809ee5790a8968b4c208c17237a793e as buildstage
 
 ARG TARGETPLATFORM
 ARG VERSION
