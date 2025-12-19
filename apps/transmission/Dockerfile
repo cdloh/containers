@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/alpine:3.20.7@sha256:92eeecc11704135b7f0140860bc8dd3235c9098ceae1d2021bf01da59523a5de
+FROM ghcr.io/cdloh/alpine:3.20.8@sha256:866800239e9d5fbd7bb7bcb0c1a54b2ab56b9db6c97cc020d6cb1a46fb44f4b4
 
 ARG TARGETPLATFORM
 ARG VERSION
