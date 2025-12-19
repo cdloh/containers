@@ -22,9 +22,9 @@ RUN \
 USER kah
 
 
+COPY ./apps/libation/appsettings.json /app/Libation/Settings.json
 RUN /usr/bin/libationcli version
-COPY ./apps/libation/appsettings.json /app/Libation/appsettings.json
-CMD ["/usr/bin/libationcli"]
+CMD ["/usr/bin/libationcli", "version"]
 
 
 LABEL org.opencontainers.image.source="https://github.com/rmcrackan/Libation"
