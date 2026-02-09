@@ -1,4 +1,4 @@
-FROM ghcr.io/cdloh/par2cmdline-turbo:1.3.0 as par2cmdline-turbo
+FROM ghcr.io/cdloh/par2cmdline-turbo:1.4.0 as par2cmdline-turbo
 
 FROM ghcr.io/cdloh/alpine:3.20.9@sha256:ce4c95822b5b212101aea53e94985a6b8802b540cac5b48296b015f800a5c233
 ARG TARGETPLATFORM
