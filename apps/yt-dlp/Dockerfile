@@ -4,7 +4,7 @@ ARG VERSION
 
 RUN set -x \
     # Install yt-dlp
- && apk add --no-cache python3 ffmpeg \
+ && apk add --no-cache python3 ffmpeg rclone rsync wget curl \
  && wget "https://github.com/yt-dlp/yt-dlp/releases/download/${VERSION}/yt-dlp" -O /usr/local/bin/yt-dlp \
  && chmod +x /usr/local/bin/yt-dlp
 
