@@ -1,0 +1,18 @@
+{
+  "app": "m4b-tool",
+  "base": false,
+  "channels": [
+    {
+      "name": "master",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "stable": false,
+      "tests": {
+        "enabled": true,
+        "type": "cli"
+      }
+    }
+  ]
+}
